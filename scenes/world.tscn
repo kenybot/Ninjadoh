@@ -24,3 +24,7 @@ SPEED = 500
 position = Vector2(-0.666664, -192)
 limit_left = 0
 limit_top = 0
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
