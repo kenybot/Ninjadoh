@@ -10,8 +10,10 @@ var land_audio = preload("res://assets/SFX/45_Landing_01.wav")
 @export var SPEED = 300
 @export var RUN_SPEED = 800
 const JUMP_VELOCITY = -400.0
-@export var RUN_JUMP = -1
+@export var RUN_JUMP = -.8
 
+
+var isLeft = velocity.x < 0
 var running: bool = false
 var landing: bool = false
 var impact_played: bool = false
@@ -29,10 +31,10 @@ func _physics_process(delta):
 		#if were running
 		running = true
 		#sound
-		if !current_SFX.is_playing():
-				current_SFX.volume_db = -15
-				current_SFX.stream = run_audio
-				current_SFX.play()
+#		if !current_SFX.is_playing():
+#				current_SFX.volume_db = -15
+#				current_SFX.stream = run_audio
+#				current_SFX.play()
 		if Input.is_action_pressed("sprint"):
 			animated_sprite_2d.play("Run")
 		else:
@@ -40,15 +42,14 @@ func _physics_process(delta):
 			animated_sprite_2d.play("Walk")
 	
 	
-	
 	if((velocity.x == 0 ) && (velocity.y == 0)):
 		running = false
 		animated_sprite_2d.play("Idle")
 	
 	#jump
-	if((is_on_floor) && Input.is_action_just_pressed("jump")):
+	if((is_on_floor) and Input.is_action_just_pressed("jump")):
 		if Input.is_action_pressed("sprint"):
-			velocity.y += (velocity.x * RUN_JUMP )
+			velocity.y += abs(velocity.x) * RUN_JUMP #PROBLEM! -> FIXED BY ADDING abs
 		else:
 			velocity.y += JUMP_VELOCITY
 		current_SFX.volume_db = 0
@@ -75,11 +76,16 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		
 	
-	move_and_slide()
+	#attacking
 	
-	#handles left 
+	if Input.is_action_just_pressed("attack"):
+		animated_sprite_2d.play("Attack")
+	
+	#handles left  dir
 	var isLeft = velocity.x < 0
 	animated_sprite_2d.flip_h = isLeft
 	
-	print(position)
+#	print(position)
 
+	move_and_slide()
+	
