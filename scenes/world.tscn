@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbaeb2uvo21p"]
+
+[ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
+[ext_resource type="PackedScene" uid="uid://c6alg5ujcp2da" path="res://scenes/character.tscn" id="2_eel8t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
+distance = -603.0
+
+[node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_3uihh")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(11.515, 1)
+shape = SubResource("WorldBoundaryShape2D_mae74")
+
+[node name="Character" parent="." instance=ExtResource("2_eel8t")]
+position = Vector2(69, 602)
+SPEED = 500
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(-0.666664, -192)
+limit_left = 0
+limit_top = 0
