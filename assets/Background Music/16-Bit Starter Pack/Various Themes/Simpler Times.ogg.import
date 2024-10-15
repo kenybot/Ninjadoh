@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3hwme77bwbx0"
+path="res://.godot/imported/Simpler Times.ogg-411e9b7c1af8e0e7d6b5ccf77d3111d7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Various Themes/Simpler Times.ogg"
+dest_files=["res://.godot/imported/Simpler Times.ogg-411e9b7c1af8e0e7d6b5ccf77d3111d7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

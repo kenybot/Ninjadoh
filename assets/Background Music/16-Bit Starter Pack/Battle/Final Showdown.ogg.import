@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cidd8ssw75uth"
+path="res://.godot/imported/Final Showdown.ogg-1611664ce64bbb4315f03cfca568ef84.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Battle/Final Showdown.ogg"
+dest_files=["res://.godot/imported/Final Showdown.ogg-1611664ce64bbb4315f03cfca568ef84.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

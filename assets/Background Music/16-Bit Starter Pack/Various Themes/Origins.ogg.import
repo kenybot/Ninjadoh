@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d27m7qamm6mtg"
+path="res://.godot/imported/Origins.ogg-0ecca1b2f7d28a84daaeb73d0858d2be.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Various Themes/Origins.ogg"
+dest_files=["res://.godot/imported/Origins.ogg-0ecca1b2f7d28a84daaeb73d0858d2be.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

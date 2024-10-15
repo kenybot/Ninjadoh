@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://du7p85d033vpr"
+path="res://.godot/imported/On The Move.ogg-e6a639634544889ccf370b35d537474d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Overworld/On The Move.ogg"
+dest_files=["res://.godot/imported/On The Move.ogg-e6a639634544889ccf370b35d537474d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

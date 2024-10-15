@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c6alg5ujcp2da"]
+[gd_scene load_steps=47 format=3 uid="uid://c6alg5ujcp2da"]
 
 [ext_resource type="Texture2D" uid="uid://34vgr0tn5muf" path="res://assets/Character Asset/AnimationSheet_Character.png" id="1_1j526"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_8iftl"]
@@ -139,6 +139,18 @@ region = Rect2(192, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cxve"]
 atlas = ExtResource("1_1j526")
 region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f806"]
+atlas = ExtResource("1_1j526")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuw4h"]
+atlas = ExtResource("1_1j526")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00bp7"]
+atlas = ExtResource("1_1j526")
+region = Rect2(64, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkr2g"]
 atlas = ExtResource("1_1j526")
@@ -287,6 +299,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2f806")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuw4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00bp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f806")
+}],
+"loop": false,
+"name": &"Teleport",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kkr2g")
 }, {
 "duration": 1.0,
@@ -306,6 +335,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv4m0"]
 
 [node name="Character" type="CharacterBody2D"]
+position = Vector2(-3, -3)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_8iftl")
 
@@ -313,10 +343,8 @@ script = ExtResource("1_8iftl")
 position = Vector2(0, -24)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h51dj")
-animation = &"Attack"
+animation = &"Teleport"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.33333, -18)
@@ -331,10 +359,3 @@ volume_db = -7.924
 position = Vector2(-0.666664, -192)
 limit_left = 0
 limit_top = 0
-
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_left = -38.0
-offset_top = -70.0
-offset_right = 41.0
-offset_bottom = -41.0
-text = "Player 1"

@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://2d5upkpyl7li"]
+
+[ext_resource type="Texture2D" uid="uid://copdnjnl8pt5" path="res://character/Flying Demon 2D Pixel Art/Sprites/with_outline/FLYING.png" id="1_2kndj"]
+[ext_resource type="Script" path="res://scenes/flying_demon.gd" id="1_w1qps"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rcv3"]
+atlas = ExtResource("1_2kndj")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arp5g"]
+atlas = ExtResource("1_2kndj")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8rxb"]
+atlas = ExtResource("1_2kndj")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjhxf"]
+atlas = ExtResource("1_2kndj")
+region = Rect2(243, 0, 81, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe26w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rcv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arp5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8rxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjhxf")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ykcp"]
+radius = 21.0238
+
+[node name="flying demon" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_w1qps")
+SPEED = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qe26w")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.0573035
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 5)
+shape = SubResource("CircleShape2D_5ykcp")

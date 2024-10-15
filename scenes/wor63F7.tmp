@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfbaeb2uvo21p"]
+
+[ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_prhjk"]
+[ext_resource type="PackedScene" uid="uid://c6alg5ujcp2da" path="res://scenes/character.tscn" id="2_eel8t"]
+[ext_resource type="PackedScene" uid="uid://xhum3mrlq23e" path="res://scenes/pause_menu.tscn" id="4_kgqqv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
+distance = -603.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_prhjk")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_3uihh")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(11.515, 1)
+shape = SubResource("WorldBoundaryShape2D_mae74")
+
+[node name="Character" parent="." instance=ExtResource("2_eel8t")]
+position = Vector2(69, 602)
+SPEED = 500
+
+[node name="PauseMenu" parent="Character" instance=ExtResource("4_kgqqv")]
+offset_left = -109.333
+offset_top = -373.333
+offset_right = -109.333
+offset_bottom = -373.333
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0

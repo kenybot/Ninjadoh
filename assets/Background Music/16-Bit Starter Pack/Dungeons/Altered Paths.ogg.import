@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmsn55nweldlb"
+path="res://.godot/imported/Altered Paths.ogg-eec80619497218dc9e2ff19c0d7c8d7f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Dungeons/Altered Paths.ogg"
+dest_files=["res://.godot/imported/Altered Paths.ogg-eec80619497218dc9e2ff19c0d7c8d7f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

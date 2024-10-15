@@ -1,4 +1,9 @@
 extends CharacterBody2D
+
+@onready var main = $"."
+
+
+@onready var projectile = load("res://scenes/projectile.tscn")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var current_SFX = $Current_SFX
 
@@ -6,11 +11,14 @@ var jump_audio = preload("res://assets/SFX/30_Jump_03.wav")
 var run_audio = preload("res://assets/SFX/Grass Running.wav")
 var land_audio = preload("res://assets/SFX/45_Landing_01.wav")
 
-
+#player info
 @export var SPEED = 300
 @export var RUN_SPEED = 800
 const JUMP_VELOCITY = -400.0
 @export var RUN_JUMP = -.8
+@export var HEALTH = 5
+
+var current_animation = "" # track the current animation
 
 
 var isLeft = velocity.x < 0
@@ -20,9 +28,48 @@ var impact_played: bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+#flags
+var is_attacking = false
+var is_teleporting = false
+
+
+func shoot():
+	var instance = projectile.instantiate()
+	var direction = Vector2(1, 0)
+	
+	if isLeft:
+		direction = Vector2(-1, 0) 
+		
+		
+	instance.dir = direction.angle()
+	instance.spawnPos = global_position
+	instance.spawnRot = instance.dir
+	instance.zdex = z_index -1
+	main.add_child.call_deferred(instance)
+
+
+func teleport():
+	global_position.x += abs(500)
+	print("tped")
+
+func play_animation(anim_name: String):
+	if animated_sprite_2d.animation != anim_name:
+		animated_sprite_2d.play(anim_name)
+		current_animation = anim_name
+
 func _physics_process(delta):
+	if Input.is_action_just_pressed("teleport"):
+		shoot()
+	
 	var input_direction = Input.get_axis("left", "right")
 	velocity.x = input_direction * SPEED
+	
+	if input_direction < 0:
+		isLeft = true
+	elif input_direction > 0:
+		isLeft = false
+	
 	
 	if Input.is_action_pressed("sprint"):
 		velocity.x = input_direction * RUN_SPEED
@@ -36,15 +83,22 @@ func _physics_process(delta):
 #				current_SFX.stream = run_audio
 #				current_SFX.play()
 		if Input.is_action_pressed("sprint"):
-			animated_sprite_2d.play("Run")
+			if(running == true):
+				play_animation("Run")
 		else:
 			
-			animated_sprite_2d.play("Walk")
-	
-	
-	if((velocity.x == 0 ) && (velocity.y == 0)):
+			play_animation("Walk")
+	else:
 		running = false
-		animated_sprite_2d.play("Idle")
+		if is_on_floor() and velocity.y == 0:
+			play_animation("Idle")
+	
+#	if((velocity.x == 0 ) && (velocity.y == 0)):
+#		running = false
+#		if not animated_sprite_2d.is_playing():
+#			play_animation("Idle")
+#		if animated_sprite_2d.animation != "Idle":
+#			animated_sprite_2d.play("Idle")
 	
 	#jump
 	if((is_on_floor) and Input.is_action_just_pressed("jump")):
@@ -55,7 +109,7 @@ func _physics_process(delta):
 		current_SFX.volume_db = 0
 		current_SFX.stream = jump_audio
 		current_SFX.play()
-		animated_sprite_2d.play("Jump")
+		play_animation("Jump")
 #		if(is_on_floor):
 #			landing_audio.play()
 			
@@ -77,15 +131,26 @@ func _physics_process(delta):
 		
 	
 	#attacking
+#
+#	if Input.is_action_just_pressed("attack"):
+#		is_attacking = true
+#		play_animation("Attack")
 	
-	if Input.is_action_just_pressed("attack"):
-		animated_sprite_2d.play("Attack")
 	
 	#handles left  dir
 	var isLeft = velocity.x < 0
 	animated_sprite_2d.flip_h = isLeft
 	
 #	print(position)
-
+	#handle tp
+#	if Input.is_action_just_pressed("teleport"):
+#		is_teleporting = true
+#		play_animation("Teleport")
+#		teleport()
+		
+	
+		
+	print(animated_sprite_2d.animation)
 	move_and_slide()
 	
+	print(velocity)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dy8leib3k0wam"
+path="res://.godot/imported/It's Bossin Time.ogg-f77b39a9fd67705f7850ae38806ce2ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Battle/It's Bossin Time.ogg"
+dest_files=["res://.godot/imported/It's Bossin Time.ogg-f77b39a9fd67705f7850ae38806ce2ae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

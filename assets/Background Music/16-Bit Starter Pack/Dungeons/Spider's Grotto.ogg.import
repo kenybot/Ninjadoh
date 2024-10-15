@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctpw0yuodpr6r"
+path="res://.godot/imported/Spider's Grotto.ogg-6175d0282b41eb4e825dda493b06fdf9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Dungeons/Spider's Grotto.ogg"
+dest_files=["res://.godot/imported/Spider's Grotto.ogg-6175d0282b41eb4e825dda493b06fdf9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

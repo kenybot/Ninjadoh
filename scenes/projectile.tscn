@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://hx42rjox6pgl"]
+
+[ext_resource type="Texture2D" uid="uid://k8ra3n74sk4k" path="res://character/Flying Demon 2D Pixel Art/Sprites/projectile.png" id="1_cix0b"]
+[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_dlmm6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5gbl"]
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_dlmm6")
+
+[node name="Fireball" type="Sprite2D" parent="."]
+texture = ExtResource("1_cix0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y5gbl")
+disabled = true

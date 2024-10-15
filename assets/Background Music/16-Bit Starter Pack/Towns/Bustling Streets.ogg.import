@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cuvoyfi6536yb"
+path="res://.godot/imported/Bustling Streets.ogg-8a2889ce2b3fd445aa6ac59f7b3595cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Towns/Bustling Streets.ogg"
+dest_files=["res://.godot/imported/Bustling Streets.ogg-8a2889ce2b3fd445aa6ac59f7b3595cc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

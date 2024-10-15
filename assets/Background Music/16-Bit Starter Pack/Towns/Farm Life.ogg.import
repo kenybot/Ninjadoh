@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dinl48nxq838c"
+path="res://.godot/imported/Farm Life.ogg-6ef0c3a25e152f918681eca9d33fbeee.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Towns/Farm Life.ogg"
+dest_files=["res://.godot/imported/Farm Life.ogg-6ef0c3a25e152f918681eca9d33fbeee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

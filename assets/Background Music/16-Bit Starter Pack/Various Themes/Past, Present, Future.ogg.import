@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://h4dwvptfr25d"
+path="res://.godot/imported/Past, Present, Future.ogg-8b4bf90b6885276a1ee7508ffb6b1d4f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Background Music/16-Bit Starter Pack/Various Themes/Past, Present, Future.ogg"
+dest_files=["res://.godot/imported/Past, Present, Future.ogg-8b4bf90b6885276a1ee7508ffb6b1d4f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

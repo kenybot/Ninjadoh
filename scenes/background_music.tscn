@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b42422bamfow"]
+
+[ext_resource type="AudioStream" uid="uid://cxnhw4skrad2" path="res://assets/Background Music/16-Bit Starter Pack/Overworld/Journey Across the Blue.ogg" id="1_3vobj"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_3vobj")
