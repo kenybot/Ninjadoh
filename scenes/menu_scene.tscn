@@ -50,7 +50,6 @@ offset_right = 652.0
 offset_bottom = 403.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_styles/normal = SubResource("StyleBoxFlat_t24ef")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t24ef")
 text = "PLAY
 "
@@ -64,8 +63,6 @@ offset_right = 652.0
 offset_bottom = 473.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_styles/normal = SubResource("StyleBoxFlat_t24ef")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t24ef")
 text = "OPTIONS
 "
 
@@ -78,8 +75,6 @@ offset_right = 652.0
 offset_bottom = 542.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_styles/normal = SubResource("StyleBoxFlat_t24ef")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t24ef")
 text = "EXIT"
 
 [node name="Menu Sounds" type="AudioStreamPlayer2D" parent="."]

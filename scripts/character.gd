@@ -10,7 +10,7 @@ extends CharacterBody2D
 var jump_audio = preload("res://assets/SFX/30_Jump_03.wav")
 var run_audio = preload("res://assets/SFX/Grass Running.wav")
 var land_audio = preload("res://assets/SFX/45_Landing_01.wav")
-
+var fire_audio = preload("res://assets/SFX/03_Claw_03.wav")
 #player info
 @export var SPEED = 300
 @export var RUN_SPEED = 800
@@ -35,15 +35,22 @@ var is_teleporting = false
 
 
 func shoot():
+	#handle sounds
+
+	current_SFX.stream = fire_audio
+	current_SFX.play()
+	
 	var instance = projectile.instantiate()
 	var direction = Vector2(1, 0)
-	
 	if isLeft:
 		direction = Vector2(-1, 0) 
-		
-		
 	instance.dir = direction.angle()
-	instance.spawnPos = global_position
+	var offset = Vector2(30, -30) #value to offset
+	
+	if isLeft:
+		offset.x = -offset.x
+	
+	instance.spawnPos = global_position + offset
 	instance.spawnRot = instance.dir
 	instance.zdex = z_index -1
 	main.add_child.call_deferred(instance)
@@ -147,10 +154,10 @@ func _physics_process(delta):
 #		is_teleporting = true
 #		play_animation("Teleport")
 #		teleport()
-		
+#
 	
 		
-	print(animated_sprite_2d.animation)
+#	print(animated_sprite_2d.animation)
 	move_and_slide()
 	
-	print(velocity)
+#	print(velocity)

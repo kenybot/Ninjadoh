@@ -47,6 +47,7 @@ pivot_offset = Vector2(54, 80)
 position = Vector2(-156.667, -401.333)
 scale = Vector2(0.666667, 0.666667)
 stream = ExtResource("7_g3g3v")
+volume_db = -10.0
 autoplay = true
 
 [node name="Settings" parent="." instance=ExtResource("5_fi1p7")]
@@ -139,3 +140,9 @@ Run as fast!"
 
 [node name="flying demon" parent="." instance=ExtResource("8_w1kqf")]
 position = Vector2(3208, 193)
+
+[node name="flying demon2" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(3869, 4)
+
+[node name="flying demon3" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(2227, 200)
