@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_rt5hy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 37.0
 offset_bottom = 21.0
@@ -30,13 +31,16 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_csoyd")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 25
 text = "VOLUME
 "
 
 [node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 min_value = -30.0
 max_value = 0.0
+allow_greater = true
+allow_lesser = true
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_h_slider_value_changed"]

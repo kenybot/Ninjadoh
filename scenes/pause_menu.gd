@@ -7,7 +7,7 @@ var hover_SFX = preload("res://assets/SFX/001_Hover_01.wav")
 var confirm_SFX = preload("res://assets/SFX/013_Confirm_03.wav")
 @onready var settings = $Settings
 
-var settings_on = false
+var settings_visible = false
 
 func _on_continue_pressed():
 	pause_sounds.stream = confirm_SFX
@@ -40,12 +40,15 @@ func _on_exit_mouse_entered():
 
 
 func _on_options_pressed():
-	settings_on = true
+	
 	pause_sounds.stream = confirm_SFX
 	pause_sounds.play()
 	
-	if(!settings_on == false):
-		
+	#if the settings is currently not shown
+	if(settings_visible == false):
 		settings.show()
+		settings_visible = true
 	else:
 		settings.hide()
+		settings_visible = false	
+	

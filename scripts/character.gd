@@ -17,6 +17,7 @@ var fire_audio = preload("res://assets/SFX/03_Claw_03.wav")
 const JUMP_VELOCITY = -400.0
 @export var RUN_JUMP = -.8
 @export var HEALTH = 5
+@onready var animation = $Animation
 
 var current_animation = "" # track the current animation
 
@@ -108,7 +109,7 @@ func _physics_process(delta):
 #			animated_sprite_2d.play("Idle")
 	
 	#jump
-	if((is_on_floor) and Input.is_action_just_pressed("jump")):
+	if((is_on_floor) and Input.is_action_just_pressed("jump") and global_position.y > 100):
 		if Input.is_action_pressed("sprint"):
 			velocity.y += abs(velocity.x) * RUN_JUMP #PROBLEM! -> FIXED BY ADDING abs
 		else:
@@ -154,11 +155,10 @@ func _physics_process(delta):
 #		is_teleporting = true
 #		play_animation("Teleport")
 #		teleport()
-#
-	
+
+
+	animation.text = animated_sprite_2d.animation
 		
-#	print(animated_sprite_2d.animation)
 	move_and_slide()
 #	print(Engine.get_frames_per_second())
-	print(velocity)
 	

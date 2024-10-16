@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://c6alg5ujcp2da"]
+[gd_scene load_steps=48 format=3 uid="uid://c6alg5ujcp2da"]
 
 [ext_resource type="Texture2D" uid="uid://34vgr0tn5muf" path="res://assets/Character Asset/AnimationSheet_Character.png" id="1_1j526"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_8iftl"]
 [ext_resource type="AudioStream" uid="uid://dlc23r4qo80eo" path="res://assets/SFX/30_Jump_03.wav" id="3_fhscc"]
+[ext_resource type="FontFile" uid="uid://cbop378hlk53u" path="res://font/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Italic.woff" id="4_dlnje"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5pcd"]
 atlas = ExtResource("1_1j526")
@@ -343,8 +344,9 @@ script = ExtResource("1_8iftl")
 position = Vector2(0, -24)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h51dj")
-animation = &"Teleport"
+animation = &"Walk"
 autoplay = "Idle"
+frame_progress = 0.272621
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.33333, -18)
@@ -354,8 +356,19 @@ shape = SubResource("CapsuleShape2D_uv4m0")
 [node name="Current_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fhscc")
 volume_db = -7.924
+bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(262, -216)
 limit_left = 0
 limit_top = 0
+
+[node name="Animation" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_dlnje")
+theme_override_font_sizes/font_size = 10
+text = "animation"

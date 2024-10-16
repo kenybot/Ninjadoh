@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfbaeb2uvo21p"]
+[gd_scene load_steps=14 format=3 uid="uid://dfbaeb2uvo21p"]
 
 [ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_prhjk"]
@@ -8,7 +8,9 @@
 [ext_resource type="FontFile" uid="uid://nms1j780ywl1" path="res://font/Kaph_Font_1_20/OpenType (.otf)/Kaph-Italic.otf" id="5_khmfn"]
 [ext_resource type="AudioStream" uid="uid://b6eyio7l3rxi3" path="res://assets/Background Music/16-Bit Starter Pack/Overworld/Long Road Ahead.ogg" id="7_g3g3v"]
 [ext_resource type="PackedScene" uid="uid://tcngacje1bkt" path="res://scenes/tile_map.tscn" id="8_nu3po"]
+[ext_resource type="PackedScene" uid="uid://2d5upkpyl7li" path="res://scenes/flying_demon.tscn" id="8_w1kqf"]
 [ext_resource type="PackedScene" uid="uid://dbgnp68368uf0" path="res://scenes/ui.tscn" id="9_endky"]
+[ext_resource type="Script" path="res://scripts/World #1 BG Music.gd" id="10_1s3go"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
 distance = -603.0
@@ -159,7 +161,7 @@ ninjadoh!
 [node name="TileMap" parent="." instance=ExtResource("8_nu3po")]
 
 [node name="Character" parent="." instance=ExtResource("2_eel8t")]
-position = Vector2(94, 602)
+position = Vector2(96, 599)
 SPEED = 500
 
 [node name="PauseMenu" parent="Character" instance=ExtResource("4_kgqqv")]
@@ -196,3 +198,16 @@ scale = Vector2(0.666667, 0.666667)
 stream = ExtResource("7_g3g3v")
 volume_db = -10.0
 autoplay = true
+script = ExtResource("10_1s3go")
+
+[node name="flying demon" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(1942, 127)
+
+[node name="flying demon2" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(2398, 387)
+
+[node name="flying demon3" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(3008, 75)
+
+[node name="flying demon4" parent="." instance=ExtResource("8_w1kqf")]
+position = Vector2(1090, 75)
