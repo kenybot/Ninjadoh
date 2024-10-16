@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://lydw25f8xt8v"]
+
+[ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="1_0miue"]
+[ext_resource type="FontFile" uid="uid://cwqe5sgjdlxpf" path="res://font/Kaph_Font_1_20/TrueType (.ttf)/Kaph-Regular.ttf" id="1_u7som"]
+[ext_resource type="Texture2D" uid="uid://dyeftx5clstmu" path="res://assets/UI ICONS/face_on_heart.png" id="3_vnjas"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gugom"]
+bg_color = Color(0.6, 0, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mh3q"]
+bg_color = Color(0.0980392, 0.45098, 0.121569, 1)
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = 416.0
+offset_top = 609.0
+offset_right = 666.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("1_u7som")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/background = SubResource("StyleBoxFlat_gugom")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4mh3q")
+value = 100.0
+script = ExtResource("1_0miue")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 14)
+scale = Vector2(0.0461879, 0.0461879)
+texture = ExtResource("3_vnjas")

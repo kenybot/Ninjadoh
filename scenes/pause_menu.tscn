@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xhum3mrlq23e"]
+[gd_scene load_steps=6 format=3 uid="uid://xhum3mrlq23e"]
 
 [ext_resource type="FontFile" uid="uid://cbop378hlk53u" path="res://font/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Italic.woff" id="1_doep7"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_pa7cq"]
@@ -7,6 +7,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_30squ"]
 shader = ExtResource("2_i1ywr")
 shader_parameter/amount = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_psd43"]
+font = ExtResource("1_doep7")
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -34,7 +40,13 @@ offset_bottom = 206.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSED!"
+label_settings = SubResource("LabelSettings_psd43")
+horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1
@@ -42,7 +54,7 @@ layout_mode = 2
 tooltip_text = "asdd"
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_doep7")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 35
 text = "CONTINUE"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -51,7 +63,7 @@ layout_mode = 2
 tooltip_text = "asdd"
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_doep7")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 35
 text = "Options
 "
 
@@ -61,7 +73,7 @@ layout_mode = 2
 tooltip_text = "asdd"
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_doep7")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 35
 text = "Exit
 "
 

@@ -1,16 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfbaeb2uvo21p"]
+[gd_scene load_steps=15 format=3 uid="uid://dfbaeb2uvo21p"]
 
 [ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_prhjk"]
 [ext_resource type="PackedScene" uid="uid://c6alg5ujcp2da" path="res://scenes/character.tscn" id="2_eel8t"]
-[ext_resource type="PackedScene" uid="uid://c7ikbwe03kl24" path="res://scenes/upgrade.tscn" id="4_ecren"]
 [ext_resource type="PackedScene" uid="uid://xhum3mrlq23e" path="res://scenes/pause_menu.tscn" id="4_kgqqv"]
 [ext_resource type="PackedScene" uid="uid://ba0xmh507wd3w" path="res://scenes/settings.tscn" id="5_fi1p7"]
 [ext_resource type="FontFile" uid="uid://nms1j780ywl1" path="res://font/Kaph_Font_1_20/OpenType (.otf)/Kaph-Italic.otf" id="5_khmfn"]
 [ext_resource type="AudioStream" uid="uid://b6eyio7l3rxi3" path="res://assets/Background Music/16-Bit Starter Pack/Overworld/Long Road Ahead.ogg" id="7_g3g3v"]
+[ext_resource type="PackedScene" uid="uid://tcngacje1bkt" path="res://scenes/tile_map.tscn" id="8_nu3po"]
 [ext_resource type="PackedScene" uid="uid://dbgnp68368uf0" path="res://scenes/ui.tscn" id="9_endky"]
 [ext_resource type="Script" path="res://scripts/World #1 BG Music.gd" id="10_1s3go"]
-[ext_resource type="PackedScene" uid="uid://lydw25f8xt8v" path="res://scenes/hp_bar.tscn" id="12_ge0k0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
 distance = -603.0
@@ -37,9 +36,6 @@ script = ExtResource("1_prhjk")
 layer = 0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_3uihh")]
-
-[node name="Upgrade" parent="." instance=ExtResource("4_ecren")]
-visible = false
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
@@ -179,8 +175,11 @@ to
 ninjadoh!
 "
 
+[node name="TileMap" parent="." instance=ExtResource("8_nu3po")]
+
 [node name="Character" parent="." instance=ExtResource("2_eel8t")]
 position = Vector2(96, 599)
+SPEED = 500
 
 [node name="PauseMenu" parent="Character" instance=ExtResource("4_kgqqv")]
 process_mode = 0
@@ -229,17 +228,4 @@ rotation = 0.582676
 [node name="SpawnInterval" type="Timer" parent="."]
 autostart = true
 
-[node name="Health Bar" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" parent="Health Bar" node_paths=PackedStringArray("character") instance=ExtResource("12_ge0k0")]
-offset_left = 435.0
-offset_top = 610.0
-offset_right = 685.0
-offset_bottom = 637.0
-character = NodePath("../../Character")
-
-[connection signal="pressed" from="Upgrade/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrade/MarginContainer/VBoxContainer/Button" to="Character" method="_on_button_pressed"]
 [connection signal="timeout" from="SpawnInterval" to="." method="_on_timer_timeout"]
-
-[editable path="Upgrade"]

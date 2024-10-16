@@ -35,7 +35,6 @@ text = "NINJADOH
 
 [node name="Menu Sounds" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
-bus = &"SFX"
 
 [node name="Menu BG Sounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_elg0p")
@@ -67,7 +66,7 @@ material = SubResource("ShaderMaterial_v72jn")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "PLAY
 "
 
@@ -77,7 +76,7 @@ material = SubResource("ShaderMaterial_v72jn")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "OPTIONS
 "
 
@@ -87,8 +86,20 @@ material = SubResource("ShaderMaterial_v72jn")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "EXIT"
+
+[node name="NINJADOH" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = -115.0
+offset_right = 666.0
+offset_bottom = -82.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.560784)
+theme_override_fonts/font = ExtResource("3_xal55")
+theme_override_font_sizes/font_size = 25
+text = "NINJADOH INC.
+"
 
 [node name="Settings" parent="." instance=ExtResource("6_yrl30")]
 visible = false

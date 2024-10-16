@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcf8rpmdap6wa"]
+
+[sub_resource type="Curve2D" id="Curve2D_cybhe"]
+
+[node name="MobSpawner" type="Path2D"]
+curve = SubResource("Curve2D_cybhe")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]

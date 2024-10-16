@@ -7,8 +7,10 @@
 script = ExtResource("1_ucwlk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 93.0
+offset_bottom = 116.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -33,3 +35,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 0.560784)
 theme_override_fonts/font = ExtResource("1_hkck4")
 theme_override_font_sizes/font_size = 25
 text = "Vel:"
+
+[node name="NINJADOH" type="Label" parent="."]
+offset_left = 914.0
+offset_top = 9.0
+offset_right = 1147.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.560784)
+theme_override_fonts/font = ExtResource("1_hkck4")
+theme_override_font_sizes/font_size = 25
+text = "NINJADOH INC.
+"

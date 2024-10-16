@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ikbwe03kl24"]
+
+[ext_resource type="Script" path="res://scenes/upgrade.gd" id="1_vltam"]
+[ext_resource type="FontFile" uid="uid://cbop378hlk53u" path="res://font/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Italic.woff" id="1_wyiu1"]
+[ext_resource type="Texture2D" uid="uid://dr3hfpebbwnq" path="res://assets/UI ICONS/face_on_yellow_power_icon.png" id="2_4rmgi"]
+[ext_resource type="FontFile" uid="uid://ds58its6457kb" path="res://font/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Italic.woff2" id="2_la1mv"]
+[ext_resource type="Texture2D" uid="uid://dyeftx5clstmu" path="res://assets/UI ICONS/face_on_heart.png" id="4_tiqnv"]
+[ext_resource type="AudioStream" uid="uid://d1n3rcjompen8" path="res://assets/SFX/001_Hover_01.wav" id="5_fyowk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w35pn"]
+font = ExtResource("1_wyiu1")
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Upgrade" type="CanvasLayer"]
+script = ExtResource("1_vltam")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -58.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.596078, 0.815686, 0.72549, 1)
+theme_override_fonts/font = ExtResource("2_la1mv")
+theme_override_font_sizes/font_size = 25
+text = "UPGRADE!"
+label_settings = SubResource("LabelSettings_w35pn")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.968627, 0, 1)
+theme_override_fonts/font = ExtResource("1_wyiu1")
+theme_override_font_sizes/font_size = 15
+text = "+SPEED "
+icon = ExtResource("2_4rmgi")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.968627, 0, 1)
+theme_override_fonts/font = ExtResource("1_wyiu1")
+theme_override_font_sizes/font_size = 15
+text = "+Health "
+icon = ExtResource("4_tiqnv")
+expand_icon = true
+
+[node name="Upgrade SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fyowk")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_mouse_entered"]

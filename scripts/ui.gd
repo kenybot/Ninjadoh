@@ -16,4 +16,4 @@ func _physics_process(delta):
 	pos.text = "Pos" + str(character_position)
 	fps.text = "FPS" + "(" +str(Engine.get_frames_per_second()) + ")"
 	vel.text = "VEL" + str(character_vel)
-	
+		
