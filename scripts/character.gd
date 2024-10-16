@@ -159,5 +159,6 @@ func _physics_process(delta):
 		
 #	print(animated_sprite_2d.animation)
 	move_and_slide()
+#	print(Engine.get_frames_per_second())
+	print(velocity)
 	
-#	print(velocity)

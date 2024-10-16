@@ -12,6 +12,8 @@ config_version=5
 
 config/name="NinjaDoh"
 run/main_scene="res://scenes/menu_scene.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SaveSystem"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/image="res://assets/Hill Paralax/Hills Layer 01.png"
 config/icon="res://icon.svg"

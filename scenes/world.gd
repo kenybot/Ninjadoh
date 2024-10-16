@@ -12,7 +12,7 @@ var paused = false
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-		
+	
 func pauseMenu():
 	if paused:
 		pause_menu.hide()

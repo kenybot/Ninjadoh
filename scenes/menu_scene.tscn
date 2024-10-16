@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2wfvdsxq8pen"]
+[gd_scene load_steps=8 format=3 uid="uid://2wfvdsxq8pen"]
 
 [ext_resource type="Script" path="res://scripts/menu_scene.gd" id="1_lvgol"]
 [ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_q5qw1"]
@@ -10,15 +10,6 @@
 draw_center = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v72jn"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t24ef"]
-bg_color = Color(0.384314, 0.25098, 0.305882, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-shadow_size = 7
-shadow_offset = Vector2(-4.825, 0)
 
 [node name="Menu Scene" type="Node2D"]
 script = ExtResource("1_lvgol")
@@ -41,42 +32,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_aferk")
 text = "NINJADOH
  "
 
-[node name="Play" type="Button" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_v72jn")
-offset_left = 490.0
-offset_top = 348.0
-offset_right = 652.0
-offset_bottom = 403.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("3_xal55")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t24ef")
-text = "PLAY
-"
-
-[node name="Options" type="Button" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_v72jn")
-offset_left = 490.0
-offset_top = 418.0
-offset_right = 652.0
-offset_bottom = 473.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("3_xal55")
-text = "OPTIONS
-"
-
-[node name="Exit" type="Button" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_v72jn")
-offset_left = 490.0
-offset_top = 487.0
-offset_right = 652.0
-offset_bottom = 542.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("3_xal55")
-text = "EXIT"
-
 [node name="Menu Sounds" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
 
@@ -84,11 +39,59 @@ volume_db = -5.0
 stream = ExtResource("5_elg0p")
 autoplay = true
 
-[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="mouse_entered" from="Options" to="." method="_on_play_mouse_entered"]
-[connection signal="pressed" from="Options" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="Exit" to="." method="_on_play_mouse_entered"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_play_pressed"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 514.0
+offset_top = 344.0
+offset_right = 554.0
+offset_bottom = 384.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = -33.0
+offset_right = 87.0
+offset_bottom = 104.0
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_v72jn")
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xal55")
+theme_override_font_sizes/font_size = 25
+text = "PLAY
+"
+
+[node name="Options" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_v72jn")
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xal55")
+theme_override_font_sizes/font_size = 25
+text = "OPTIONS
+"
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_v72jn")
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xal55")
+theme_override_font_sizes/font_size = 25
+text = "EXIT"
+
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/Options" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Options" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/Exit" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

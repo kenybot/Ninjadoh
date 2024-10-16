@@ -5,7 +5,7 @@ extends Control
 
 var hover_SFX = preload("res://assets/SFX/001_Hover_01.wav")
 var confirm_SFX = preload("res://assets/SFX/013_Confirm_03.wav")
-@onready var settings = $"../../Settings"
+@onready var settings = $Settings
 
 var settings_on = false
 

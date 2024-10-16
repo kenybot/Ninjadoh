@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2d5upkpyl7li"]
+[gd_scene load_steps=9 format=3 uid="uid://2d5upkpyl7li"]
 
 [ext_resource type="Texture2D" uid="uid://copdnjnl8pt5" path="res://character/Flying Demon 2D Pixel Art/Sprites/with_outline/FLYING.png" id="1_2kndj"]
 [ext_resource type="Script" path="res://scenes/flying_demon.gd" id="1_w1qps"]
@@ -47,8 +47,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ykcp"]
 radius = 21.0238
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n18be"]
-
 [node name="flying demon" type="CharacterBody2D" groups=["Enemy_mob"]]
 motion_mode = 1
 script = ExtResource("1_w1qps")
@@ -61,12 +59,5 @@ autoplay = "flying"
 frame_progress = 0.0573035
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-8, 5)
 shape = SubResource("CircleShape2D_5ykcp")
-
-[node name="HurtBox" type="Area2D" parent="."]
-scale = Vector2(-5.63319, 4.91826)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_n18be")

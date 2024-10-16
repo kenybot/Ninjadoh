@@ -356,6 +356,6 @@ stream = ExtResource("3_fhscc")
 volume_db = -7.924
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-0.666664, -192)
+position = Vector2(262, -216)
 limit_left = 0
 limit_top = 0

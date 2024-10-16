@@ -17,3 +17,5 @@ position = Vector2(3, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y5gbl")
 disabled = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

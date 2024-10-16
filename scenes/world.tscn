@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfbaeb2uvo21p"]
+[gd_scene load_steps=12 format=3 uid="uid://dfbaeb2uvo21p"]
 
 [ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_prhjk"]
@@ -7,13 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://ba0xmh507wd3w" path="res://scenes/settings.tscn" id="5_fi1p7"]
 [ext_resource type="FontFile" uid="uid://nms1j780ywl1" path="res://font/Kaph_Font_1_20/OpenType (.otf)/Kaph-Italic.otf" id="5_khmfn"]
 [ext_resource type="AudioStream" uid="uid://b6eyio7l3rxi3" path="res://assets/Background Music/16-Bit Starter Pack/Overworld/Long Road Ahead.ogg" id="7_g3g3v"]
-[ext_resource type="PackedScene" uid="uid://2d5upkpyl7li" path="res://scenes/flying_demon.tscn" id="8_w1kqf"]
+[ext_resource type="PackedScene" uid="uid://tcngacje1bkt" path="res://scenes/tile_map.tscn" id="8_nu3po"]
+[ext_resource type="PackedScene" uid="uid://dbgnp68368uf0" path="res://scenes/ui.tscn" id="9_endky"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
 distance = -603.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltkp"]
+content_margin_left = 9.0
+bg_color = Color(0.6, 0.6, 0.6, 0.243137)
+shadow_color = Color(0, 0.12549, 0.141176, 0.6)
+shadow_size = 5
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_prhjk")
+
+[node name="UI" parent="." instance=ExtResource("9_endky")]
+layer = 0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_3uihh")]
 
@@ -24,8 +34,132 @@ visible = false
 scale = Vector2(11.515, 1)
 shape = SubResource("WorldBoundaryShape2D_mae74")
 
+[node name="Tips" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 915.0
+offset_top = 364.0
+offset_right = 955.0
+offset_bottom = 404.0
+
+[node name="Move Keys" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = -245.0
+offset_top = -105.0
+offset_right = -32.0
+offset_bottom = 137.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+MOVE KEYS
+ 
+A - LEFT
+D - RIGHT
+W/SPACE - JUMP
+F - ATTACK 
+ESC - PAUSE/EXIT
+
+Hold Shift to run!
+
+"
+
+[node name="Tips1" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = 615.0
+offset_top = -54.0
+offset_right = 828.0
+offset_bottom = 56.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+START BY
+PRACTICING
+THE MOVEMENTS!
+"
+
+[node name="Tips2" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = 1963.0
+offset_top = 56.0
+offset_right = 2176.0
+offset_bottom = 166.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+Get more jumping
+power by running
+then jumping! 
+"
+
+[node name="Tips3" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = 2434.0
+offset_top = -306.0
+offset_right = 2647.0
+offset_bottom = -224.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+There are no
+jump limits!
+"
+
+[node name="Tips4" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = 3487.0
+offset_top = 50.0
+offset_right = 3700.0
+offset_bottom = 131.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+Jump as high!
+Run as Fast!"
+
+[node name="Tips5" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = 2880.0
+offset_top = -34.0
+offset_right = 3093.0
+offset_bottom = 48.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+Survive till
+the timer ends!"
+
+[node name="Welcome" type="Label" parent="Tips"]
+layout_mode = 0
+offset_left = -675.0
+offset_top = -74.0
+offset_right = -462.0
+offset_bottom = 36.0
+pivot_offset = Vector2(100, 62)
+theme_override_fonts/font = ExtResource("5_khmfn")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
+text = "
+Welcome 
+to
+ninjadoh!
+"
+
+[node name="TileMap" parent="." instance=ExtResource("8_nu3po")]
+
 [node name="Character" parent="." instance=ExtResource("2_eel8t")]
-position = Vector2(235, 602)
+position = Vector2(94, 602)
 SPEED = 500
 
 [node name="PauseMenu" parent="Character" instance=ExtResource("4_kgqqv")]
@@ -34,14 +168,27 @@ visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_bottom = 0.0
-offset_left = -104.667
+offset_left = 149.333
 offset_top = -282.0
-offset_right = -104.667
+offset_right = 149.333
 offset_bottom = -282.0
 grow_horizontal = 0
 grow_vertical = 1
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(54, 80)
+
+[node name="Settings" parent="Character/PauseMenu" instance=ExtResource("5_fi1p7")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 367.334
+offset_top = 81.3333
+offset_right = 367.334
+offset_bottom = 81.3333
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="World #1 BG Music" type="AudioStreamPlayer2D" parent="Character"]
 position = Vector2(-156.667, -401.333)
@@ -49,100 +196,3 @@ scale = Vector2(0.666667, 0.666667)
 stream = ExtResource("7_g3g3v")
 volume_db = -10.0
 autoplay = true
-
-[node name="Settings" parent="." instance=ExtResource("5_fi1p7")]
-visible = false
-offset_left = 222.0
-offset_top = 305.0
-offset_right = 222.0
-offset_bottom = 305.0
-
-[node name="Tips" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 222.0
-offset_top = 305.0
-offset_right = 262.0
-offset_bottom = 345.0
-
-[node name="Label" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 659.0
-offset_top = 10.0
-offset_right = 872.0
-offset_bottom = 186.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "
-MOVE KEYS
- 
-A - LEFT
-D - RIGHT
-
-Hold Shift to run!
-
-"
-
-[node name="Label6" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 428.0
-offset_top = 10.0
-offset_right = 641.0
-offset_bottom = 186.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "
-	Press \"ESC\"
-to tab out"
-
-[node name="Label2" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 1101.0
-offset_top = 148.0
-offset_right = 1330.0
-offset_bottom = 324.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "
-Start By Practicing 
-the Movements!"
-
-[node name="Label3" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 1672.0
-offset_top = -1.0
-offset_right = 1901.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "
-Get more jumping 
-power by running
-then jumping!"
-
-[node name="Label4" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 2138.0
-offset_top = 80.0
-offset_right = 2367.0
-offset_bottom = 256.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "
-There are no
-	Jump limits!"
-
-[node name="Label5" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 2600.0
-offset_top = 29.0
-offset_right = 2829.0
-offset_bottom = 205.0
-theme_override_fonts/font = ExtResource("5_khmfn")
-text = "Jump as high!
- 
-Run as fast!"
-
-[node name="flying demon" parent="." instance=ExtResource("8_w1kqf")]
-position = Vector2(3208, 193)
-
-[node name="flying demon2" parent="." instance=ExtResource("8_w1kqf")]
-position = Vector2(3869, 4)
-
-[node name="flying demon3" parent="." instance=ExtResource("8_w1kqf")]
-position = Vector2(2227, 200)
