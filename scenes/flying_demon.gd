@@ -1,21 +1,24 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
-
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+var death = preload("res://assets/SFX/69_Enemy_death_01.wav")
 #mob info
-@export var SPEED = 15
+@export var SPEED = 2
 var player_position
 var target_position
 @onready var flying_mob = $AnimatedSprite2D
 
-@onready var player = get_parent().get_node("Character")
+@onready var player = get_parent().get_node("Save/Character")
 var health
-
 
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
 	
+	
 	if health <= 0:
+		audio_stream_player_2d.stream = death
+		audio_stream_player_2d.play()
 		queue_free()
 	
 	velocity = (global_position - attack.attack_position).normalized()*attack.knockback_force

@@ -1,23 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfbaeb2uvo21p"]
+[gd_scene load_steps=18 format=3 uid="uid://dfbaeb2uvo21p"]
 
 [ext_resource type="PackedScene" uid="uid://bh170d1fqj6qr" path="res://scenes/parallax_background.tscn" id="1_3uihh"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_prhjk"]
-[ext_resource type="PackedScene" uid="uid://bcxrecy0gm8q7" path="res://scenes/main.tscn" id="2_04gt8"]
 [ext_resource type="PackedScene" uid="uid://c6alg5ujcp2da" path="res://scenes/character.tscn" id="2_eel8t"]
+[ext_resource type="PackedScene" uid="uid://c7ikbwe03kl24" path="res://scenes/upgrade.tscn" id="4_ecren"]
 [ext_resource type="PackedScene" uid="uid://xhum3mrlq23e" path="res://scenes/pause_menu.tscn" id="4_kgqqv"]
 [ext_resource type="PackedScene" uid="uid://ba0xmh507wd3w" path="res://scenes/settings.tscn" id="5_fi1p7"]
 [ext_resource type="FontFile" uid="uid://nms1j780ywl1" path="res://font/Kaph_Font_1_20/OpenType (.otf)/Kaph-Italic.otf" id="5_khmfn"]
-[ext_resource type="AudioStream" uid="uid://d27m7qamm6mtg" path="res://assets/Background Music/16-Bit Starter Pack/Various Themes/Origins.ogg" id="6_qe2jy"]
+[ext_resource type="AudioStream" uid="uid://b6eyio7l3rxi3" path="res://assets/Background Music/16-Bit Starter Pack/Overworld/Long Road Ahead.ogg" id="7_g3g3v"]
 [ext_resource type="PackedScene" uid="uid://dbgnp68368uf0" path="res://scenes/ui.tscn" id="9_endky"]
 [ext_resource type="Script" path="res://scripts/World #1 BG Music.gd" id="10_1s3go"]
 [ext_resource type="PackedScene" uid="uid://85s75j7abytw" path="res://scenes/game_over.tscn" id="12_3itjo"]
 [ext_resource type="PackedScene" uid="uid://lydw25f8xt8v" path="res://scenes/hp_bar.tscn" id="12_ge0k0"]
-
-[sub_resource type="Curve2D" id="Curve2D_q7krl"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 704, -389.333, 0, 0, 0, 0, 878, -274.667, 0, 0, 0, 0, 780, -154, 0, 0, 0, 0, 704, -389.333)
-}
-point_count = 4
+[ext_resource type="Script" path="res://scripts/save.gd" id="13_3y54d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
 distance = -603.0
@@ -31,66 +26,22 @@ bg_color = Color(0.6, 0.6, 0.6, 0.243137)
 shadow_color = Color(0, 0.12549, 0.141176, 0.6)
 shadow_size = 5
 
+[sub_resource type="Curve2D" id="Curve2D_q7krl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 704, -389.333, 0, 0, 0, 0, 878, -274.667, 0, 0, 0, 0, 780, -154, 0, 0, 0, 0, 704, -389.333)
+}
+point_count = 4
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_prhjk")
-
-[node name="Save" parent="." instance=ExtResource("2_04gt8")]
-
-[node name="Character" parent="Save" instance=ExtResource("2_eel8t")]
-position = Vector2(96, 599)
-
-[node name="PauseMenu" parent="Save/Character" instance=ExtResource("4_kgqqv")]
-process_mode = 0
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = 149.333
-offset_top = -282.0
-offset_right = 149.333
-offset_bottom = -282.0
-grow_horizontal = 0
-grow_vertical = 1
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(54, 80)
-
-[node name="Settings" parent="Save/Character/PauseMenu" instance=ExtResource("5_fi1p7")]
-visible = false
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 367.334
-offset_top = 81.3333
-offset_right = 367.334
-offset_bottom = 81.3333
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="World #1 BG Music" type="AudioStreamPlayer2D" parent="Save/Character"]
-position = Vector2(-156.667, -401.333)
-scale = Vector2(0.666667, 0.666667)
-stream = ExtResource("6_qe2jy")
-volume_db = 5.0
-autoplay = true
-script = ExtResource("10_1s3go")
-
-[node name="Mob Spawner" type="Path2D" parent="Save/Character"]
-curve = SubResource("Curve2D_q7krl")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Save/Character/Mob Spawner"]
-unique_name_in_owner = true
-position = Vector2(704, -389.333)
-rotation = 0.582676
-
-[node name="World_SFX" type="AudioStreamPlayer2D" parent="Save/Character"]
-position = Vector2(-64, -399.333)
-scale = Vector2(0.666667, 0.666667)
 
 [node name="UI" parent="." instance=ExtResource("9_endky")]
 layer = 0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_3uihh")]
+
+[node name="Upgrade" parent="." instance=ExtResource("4_ecren")]
+visible = false
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
@@ -131,7 +82,8 @@ MOVE KEYS
  
 A - LEFT
 D - RIGHT
-W/SPACE - JUMP  
+W/SPACE - JUMP
+F - ATTACK 
 ESC - PAUSE/EXIT
 
 Hold Shift to run!
@@ -185,21 +137,6 @@ There are no
 jump limits!
 "
 
-[node name="Tips7" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 3303.0
-offset_top = -222.0
-offset_right = 3516.0
-offset_bottom = -140.0
-pivot_offset = Vector2(100, 62)
-theme_override_fonts/font = ExtResource("5_khmfn")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
-text = "
-As you go farther,
-Your speed increases! 
-"
-
 [node name="Tips4" type="Label" parent="Tips"]
 layout_mode = 0
 offset_left = 3487.0
@@ -225,21 +162,8 @@ theme_override_fonts/font = ExtResource("5_khmfn")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
 text = "
-Survive for as long 
-As you can! "
-
-[node name="Tips6" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 3961.0
-offset_top = -98.0
-offset_right = 4186.0
-offset_bottom = -16.0
-pivot_offset = Vector2(100, 62)
-theme_override_fonts/font = ExtResource("5_khmfn")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
-text = "
-See how far you can go! "
+Survive till
+the timer ends!"
 
 [node name="Welcome" type="Label" parent="Tips"]
 layout_mode = 0
@@ -257,20 +181,56 @@ to
 ninjadoh!
 "
 
-[node name="Welcome2" type="Label" parent="Tips"]
-layout_mode = 0
-offset_left = 1233.0
-offset_top = -74.0
-offset_right = 1446.0
-offset_bottom = 36.0
-pivot_offset = Vector2(100, 62)
-theme_override_fonts/font = ExtResource("5_khmfn")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
-text = "
-STEP ON THE FLYING
-MOBS TO KILL THEM!
-"
+[node name="Character" parent="." instance=ExtResource("2_eel8t")]
+position = Vector2(96, 599)
+
+[node name="PauseMenu" parent="Character" instance=ExtResource("4_kgqqv")]
+process_mode = 0
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = 149.333
+offset_top = -282.0
+offset_right = 149.333
+offset_bottom = -282.0
+grow_horizontal = 0
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(54, 80)
+
+[node name="Settings" parent="Character/PauseMenu" instance=ExtResource("5_fi1p7")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 367.334
+offset_top = 81.3333
+offset_right = 367.334
+offset_bottom = 81.3333
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="World #1 BG Music" type="AudioStreamPlayer2D" parent="Character"]
+position = Vector2(-156.667, -401.333)
+scale = Vector2(0.666667, 0.666667)
+stream = ExtResource("7_g3g3v")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("10_1s3go")
+
+[node name="Mob Spawner" type="Path2D" parent="Character"]
+curve = SubResource("Curve2D_q7krl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Character/Mob Spawner"]
+unique_name_in_owner = true
+position = Vector2(704, -389.333)
+rotation = 0.582676
+
+[node name="World_SFX" type="AudioStreamPlayer2D" parent="Character"]
+position = Vector2(-64, -399.333)
+scale = Vector2(0.666667, 0.666667)
 
 [node name="SpawnInterval" type="Timer" parent="."]
 wait_time = 3.0
@@ -283,7 +243,7 @@ offset_left = 435.0
 offset_top = 610.0
 offset_right = 685.0
 offset_bottom = 637.0
-character = NodePath("../../Save/Character")
+character = NodePath("../../Character")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -295,4 +255,11 @@ offset_right = 395.0
 offset_bottom = 275.0
 size_flags_horizontal = 4
 
+[node name="Save_Load" type="Node2D" parent="."]
+script = ExtResource("13_3y54d")
+
+[connection signal="pressed" from="Upgrade/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Upgrade/MarginContainer/VBoxContainer/Button" to="Character" method="_on_button_pressed"]
 [connection signal="timeout" from="SpawnInterval" to="." method="_on_timer_timeout"]
+
+[editable path="Upgrade"]

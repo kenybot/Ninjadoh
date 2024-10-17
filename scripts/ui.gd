@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@onready var character = get_parent().get_node("Character")
+
+@onready var character = $"../Save/Character"
 
 @onready var pos = $MarginContainer/VBoxContainer/POS
 @onready var fps = $MarginContainer/VBoxContainer/FPS

@@ -57,6 +57,13 @@ theme_override_fonts/font = ExtResource("1_doep7")
 theme_override_font_sizes/font_size = 35
 text = "CONTINUE"
 
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_doep7")
+theme_override_font_sizes/font_size = 35
+text = "Save"
+
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -81,6 +88,8 @@ text = "Exit
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]

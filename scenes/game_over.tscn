@@ -1,4 +1,19 @@
-[gd_scene format=3 uid="uid://c3f82ffycp453"]
+[gd_scene load_steps=7 format=3 uid="uid://85s75j7abytw"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_tljpl"]
+[ext_resource type="Shader" path="res://assets/Shader/menu_scene.gdshader" id="2_3jsbs"]
+[ext_resource type="AudioStream" uid="uid://ch6edb5s07mj4" path="res://assets/Background Music/16-Bit Starter Pack/Dungeons/Crystal Clear.ogg" id="3_m1kfp"]
+[ext_resource type="FontFile" uid="uid://cbop378hlk53u" path="res://font/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Italic.woff" id="3_st2q5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrhji"]
+shader = ExtResource("2_3jsbs")
+shader_parameter/amount = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1al4"]
+font_size = 40
+font_color = Color(0.529412, 0.180392, 0.239216, 1)
+outline_size = 5
+outline_color = Color(0.619608, 0.619608, 0.619608, 1)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -7,6 +22,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tljpl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xrhji")
+layout_mode = 0
+offset_left = -1012.0
+offset_top = -826.0
+offset_right = 1157.0
+offset_bottom = 658.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -15,3 +39,34 @@ offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_st2q5")
+theme_override_font_sizes/font_size = 35
+text = "GAMEOVER!"
+label_settings = SubResource("LabelSettings_c1al4")
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_st2q5")
+theme_override_font_sizes/font_size = 20
+text = "RESTART"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_st2q5")
+theme_override_font_sizes/font_size = 20
+text = "Exit
+"
+
+[node name="GameOver SFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="GameOver BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m1kfp")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
