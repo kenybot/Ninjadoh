@@ -48,7 +48,7 @@ func load_game():
 		
 		#checking 
 		if not character:
-			character = get_node(\"../Character\")
+			character = get_node_or_null(\"/root/World/Character\")
 			if not character:
 				print(\"Player node not found!\")
 				return 

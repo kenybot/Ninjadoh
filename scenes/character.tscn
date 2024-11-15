@@ -353,12 +353,11 @@ script = ExtResource("1_8iftl")
 script = ExtResource("2_3ff3i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -24.6667)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h51dj")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.100998
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.33333, -18)
@@ -414,6 +413,12 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-0.666667, -18)
 shape = SubResource("CircleShape2D_73mtb")
+
+[node name="ShurikenPoint" type="Marker2D" parent="."]
+position = Vector2(36, -20)
+
+[node name="ShurikenPoint2" type="Marker2D" parent="."]
+position = Vector2(36, -40.6667)
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

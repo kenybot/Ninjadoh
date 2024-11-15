@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://85s75j7abytw" path="res://scenes/game_over.tscn" id="12_3itjo"]
 [ext_resource type="PackedScene" uid="uid://lydw25f8xt8v" path="res://scenes/hp_bar.tscn" id="12_ge0k0"]
 [ext_resource type="Texture2D" uid="uid://cq1yxwa8fhnot" path="res://assets/jumpicon.png" id="14_q54ax"]
-[ext_resource type="PackedScene" uid="uid://b5dw0m5sefay5" path="res://scenes/+1_shuriken.tscn" id="14_qetp8"]
 [ext_resource type="Texture2D" uid="uid://cu7h3jhbmj5in" path="res://assets/speedicon.png" id="15_5eq7y"]
 
 [sub_resource type="Curve2D" id="Curve2D_q7krl"]
@@ -26,6 +25,9 @@ point_count = 4
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mae74"]
 distance = -603.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thne1"]
+size = Vector2(1000, 100)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltkp"]
 content_margin_left = 9.0
@@ -58,6 +60,42 @@ travelled"
 [node name="Character" parent="Save" instance=ExtResource("2_eel8t")]
 position = Vector2(29, 593)
 
+[node name="PauseMenu" parent="Save/Character" instance=ExtResource("4_kgqqv")]
+process_mode = 0
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = 149.333
+offset_top = -282.0
+offset_right = 149.333
+offset_bottom = -282.0
+grow_horizontal = 0
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(54, 80)
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" parent="Save/Character/PauseMenu" instance=ExtResource("5_fi1p7")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 339.334
+offset_top = 80.0
+offset_right = 339.334
+offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.42667, 1.49205)
+
+[node name="Button" parent="Save/Character/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer" index="0"]
+mouse_default_cursor_shape = 2
+
+[node name="Button2" parent="Save/Character/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer" index="1"]
+mouse_default_cursor_shape = 2
+
 [node name="World #1 BG Music" type="AudioStreamPlayer2D" parent="Save/Character"]
 position = Vector2(-156.667, -401.333)
 scale = Vector2(0.666667, 0.666667)
@@ -79,12 +117,11 @@ position = Vector2(-64, -399.333)
 scale = Vector2(0.666667, 0.666667)
 
 [node name="Announcement" type="Label" parent="Save/Character"]
-offset_left = -20.6667
-offset_top = -60.6667
-offset_right = 92.3333
-offset_bottom = -41.6667
-theme_override_colors/font_color = Color(0, 0.968627, 0, 1)
-theme_override_font_sizes/font_size = 10
+offset_left = -50.0
+offset_top = -59.3333
+offset_right = 63.0
+offset_bottom = -40.3333
+theme_override_font_sizes/font_size = 15
 
 [node name="UI" parent="." instance=ExtResource("9_endky")]
 layer = 0
@@ -101,6 +138,16 @@ script = ExtResource("11_5ux8k")
 scale = Vector2(11.515, 1)
 shape = SubResource("WorldBoundaryShape2D_mae74")
 
+[node name="Ceiling Barrier" type="StaticBody2D" parent="."]
+position = Vector2(0, -569)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling Barrier"]
+position = Vector2(642, 554)
+scale = Vector2(11.515, 1)
+shape = SubResource("RectangleShape2D_thne1")
+disabled = true
+one_way_collision_margin = 58.5
+
 [node name="Tips" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -111,9 +158,9 @@ offset_bottom = 404.0
 
 [node name="Move Keys" type="Label" parent="Tips"]
 layout_mode = 0
-offset_left = -243.0
+offset_left = -245.0
 offset_top = -105.0
-offset_right = -29.0
+offset_right = -32.0
 offset_bottom = 137.0
 pivot_offset = Vector2(100, 62)
 theme_override_fonts/font = ExtResource("5_khmfn")
@@ -121,8 +168,7 @@ theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
 text = "
 MOVE KEYS
-
-f - Throw Shuriken 
+ 
 A - LEFT
 D - RIGHT
 W/SPACE - JUMP  
@@ -151,12 +197,12 @@ THE MOVEMENTS!
 [node name="Tips2" type="Label" parent="Tips"]
 layout_mode = 0
 offset_left = 1963.0
-offset_top = -58.0
-offset_right = 2428.0
+offset_top = 56.0
+offset_right = 2176.0
 offset_bottom = 166.0
 pivot_offset = Vector2(100, 62)
 theme_override_fonts/font = ExtResource("5_khmfn")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
 text = "
 Get more jumping
@@ -262,9 +308,8 @@ theme_override_fonts/font = ExtResource("5_khmfn")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_pltkp")
 text = "
-Shuriken the mobs!
-or 
-step on them 
+STEP ON THE FLYING
+MOBS TO KILL THEM!
 "
 
 [node name="SpawnInterval" type="Timer" parent="."]
@@ -314,16 +359,6 @@ mouse_default_cursor_shape = 2
 text = "+Speed"
 icon = ExtResource("15_5eq7y")
 
-[node name="+1Shuriken" parent="Health Bar_Upgrade" instance=ExtResource("14_qetp8")]
-visible = false
-offset_left = 432.0
-offset_top = 511.0
-offset_right = 432.232
-offset_bottom = 505.992
-
-[node name="Button" parent="Health Bar_Upgrade/+1Shuriken" index="0"]
-mouse_default_cursor_shape = 2
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("12_3itjo")]
@@ -334,51 +369,11 @@ offset_right = 395.0
 offset_bottom = 275.0
 size_flags_horizontal = 4
 
-[node name="Pause" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="Pause" instance=ExtResource("4_kgqqv")]
-process_mode = 0
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -45.0
-offset_right = -51.0
-offset_bottom = -45.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(54, 80)
-
-[node name="Settings" parent="Pause/PauseMenu" instance=ExtResource("5_fi1p7")]
-visible = false
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 230.0
-offset_top = -78.0
-offset_right = 230.0
-offset_bottom = -78.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(1.42667, 1.49205)
-
-[node name="Button" parent="Pause/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer" index="0"]
-mouse_default_cursor_shape = 2
-
-[node name="Button2" parent="Pause/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer" index="1"]
-mouse_default_cursor_shape = 2
-
+[connection signal="pressed" from="Save/Character/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer/Button" to="." method="_on_light_pressed"]
+[connection signal="pressed" from="Save/Character/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer/Button2" to="." method="_on_dark_pressed"]
 [connection signal="timeout" from="SpawnInterval" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Health Bar_Upgrade/UPGRADE/MarginContainer/HBoxContainer/Jump" to="." method="_on_plus_jump_pressed"]
-[connection signal="pressed" from="Health Bar_Upgrade/UPGRADE/MarginContainer/HBoxContainer/Speed" to="." method="_on_speed_pressed"]
-[connection signal="pressed" from="Health Bar_Upgrade/+1Shuriken/Button" to="." method="_on_1_shuriken_button_pressed"]
-[connection signal="pressed" from="Pause/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer/Button" to="." method="_on_light_pressed"]
-[connection signal="pressed" from="Pause/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode/MarginContainer/HBoxContainer/Button2" to="." method="_on_dark_pressed"]
 
-[editable path="Health Bar_Upgrade/+1Shuriken"]
+[editable path="Save/Character/PauseMenu/Settings"]
+[editable path="Save/Character/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode"]
 [editable path="CanvasLayer/GameOver"]
-[editable path="Pause/PauseMenu/Settings"]
-[editable path="Pause/PauseMenu/Settings/MarginContainer/VBoxContainer/Lightmode"]

@@ -13,5 +13,3 @@ func _on_button_mouse_entered():
 func _on_button_2_mouse_entered():
 	upgrade_sfx.stream = hover_SFX
 	upgrade_sfx.play()
-
-

@@ -3,21 +3,55 @@ var ALICE_BLUE = Color(0.941176, 0.972549, 1, 1)
 
 var mobs = 1
 @onready var world_sfx = $Save/Character/World_SFX
-@onready var pause_menu = $Save/Character/PauseMenu
+@onready var pause_menu = $Pause/PauseMenu
 @onready var character = $Save/Character
-
-
+var original_color = Color(.39,.39,.35,1.0)
+var white = Color(1.0,1.0,1.0,1.0)
+@onready var tips = $Tips
+@onready var parallax_background_dark_: ParallaxBackground = $"ParallaxBackground(DARK)"
+@onready var parallax_background: ParallaxBackground = $ParallaxBackground
 
 var pause_SFX = preload("res://assets/SFX/092_Pause_04.wav")
 var unpause_SFX = preload("res://assets/SFX/098_Unpause_04.wav")
+@onready var announcement: Label = $Save/Character/Announcement
 
+@onready var total_distance_label: Label = $Position/Total_Distance
+@onready var upgrade: Control = $"Health Bar_Upgrade/UPGRADE"
+@onready var plus_shuriken: Control = $"Health Bar_Upgrade/+1Shuriken"
 
 var paused = false
+var check_done = false
+var check_done_two = false #second round of upgrade
+var check_done_shu = false
+var check_done_three = false
+
 
 func _physics_process(delta):
+	var max_jump = character.get_max_jump()
+	var total_distance = round(character.get_total_distance())
+	total_distance_label.text = "Total Distance: " + str(total_distance)
 	if Input.is_action_just_pressed("pause"):
+		tips.visible = !tips.visible
 		pauseMenu()
+		
+	if total_distance > 10000 and check_done == false:
+		print("upgrade available")
+		upgrade.visible = true
+		check_done = true
 	
+	if total_distance > 20000 and check_done_shu == false:
+		print("+shuriken ready")
+		plus_shuriken.visible = true
+		check_done_shu = true
+	
+	if total_distance > 25000 and check_done_two == false:
+		upgrade.visible = true
+		check_done_two = true
+	
+	if total_distance > 32000 and check_done_three == false:
+		upgrade.visible = true
+		check_done_three = true
+		
 func pauseMenu():
 	if paused:
 		world_sfx.stream = pause_SFX
@@ -73,5 +107,41 @@ func _on_timer_timeout():
 		spawn_hardest(4)
 	elif(character.global_position.x > 45000):
 		spawn_hardest(5)
+		
 
 
+func _on_light_pressed() -> void:
+	parallax_background.visible = true
+	parallax_background_dark_.visible = false
+	total_distance_label.set("theme_override_colors/font_color", original_color)
+
+func _on_dark_pressed() -> void:
+	parallax_background.visible = false
+	parallax_background_dark_.visible = true
+	total_distance_label.set("theme_override_colors/font_color", white)
+	
+
+
+func _on_plus_jump_pressed() -> void:
+	character.add_max_jump(1)
+	announcement.text = "+MAXJUMP!"
+	upgrade.visible = false
+	await get_tree().create_timer(3.0).timeout
+	announcement.text = ""
+	
+	
+func _on_speed_pressed() -> void:
+	character.add_current_speed(50)
+	announcement.text = "+SPEED!"
+	upgrade.visible = false
+	await get_tree().create_timer(3.0).timeout
+	announcement.text = ""
+	
+
+
+func _on_1_shuriken_button_pressed() -> void:
+	announcement.text = "+SHURIKEN!"
+	plus_shuriken.visible = false
+	character.set_plus_shuriken(true) #signaling the character to have the 2nd weapon on
+	await get_tree().create_timer(3.0).timeout
+	announcement.text = ""

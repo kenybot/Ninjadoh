@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbyu75xbwagsl"]
+
+[ext_resource type="Texture2D" uid="uid://dejlcb0my30q4" path="res://assets/Weapons/01.png" id="1_ukl0w"]
+[ext_resource type="Script" path="res://scripts/shuriken.gd" id="1_w48v6"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_yngxg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snkpi"]
+radius = 17.2627
+
+[sub_resource type="Animation" id="Animation_w6x32"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ju8jn"]
+resource_name = "Spinning"
+length = 1.3
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4pfq"]
+_data = {
+"RESET": SubResource("Animation_w6x32"),
+"Spinning": SubResource("Animation_ju8jn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpxj2"]
+size = Vector2(17.3333, 37.3333)
+
+[node name="Shuriken" type="Area2D"]
+script = ExtResource("1_w48v6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_snkpi")
+
+[node name="01" type="Sprite2D" parent="."]
+texture = ExtResource("1_ukl0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="01"]
+libraries = {
+"": SubResource("AnimationLibrary_q4pfq")
+}
+autoplay = "Spinning"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("3_yngxg")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(15.6667, -1.33333)
+shape = SubResource("RectangleShape2D_hpxj2")

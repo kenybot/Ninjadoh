@@ -23,5 +23,3 @@ func _physics_procesas(delta):
 	if global_position.x < 0 or global_position.x > get_viewport_rect().size.x:
 		print("Queueing free...")
 		queue_free()
-
-

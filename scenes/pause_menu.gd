@@ -3,7 +3,7 @@ extends Control
 @onready var main = $"../../.."
 @onready var pause_sounds = $"Pause Sounds"
 @onready var save_node = $"../.."
-@onready var character = $".."
+@onready var character = $"../../Save/Character"
 
 var hover_SFX = preload("res://assets/SFX/001_Hover_01.wav")
 var confirm_SFX = preload("res://assets/SFX/013_Confirm_03.wav")
@@ -21,7 +21,7 @@ func _on_exit_pressed():
 func _on_exit_mouse_entered():
 	pause_sounds.stream = hover_SFX
 	pause_sounds.play()
-	save_node.save
+	
 
 
 

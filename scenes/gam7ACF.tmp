@@ -67,23 +67,21 @@ stream = ExtResource("3_m1kfp")
 
 [node name="Details" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 159.0
-offset_right = 318.0
-offset_bottom = 212.0
+offset_left = 350.0
+offset_right = 478.0
+offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Details"]
 layout_mode = 2
 
 [node name="Statistics" type="Label" parent="Details/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Statistics..."
+theme_override_font_sizes/font_size = 25
+text = "Statistics"
 
 [node name="Total Distance" type="Label" parent="Details/VBoxContainer"]
 layout_mode = 2
-text = "Total Distance 
-Travelled: "
+text = "Total Distance Travelled: "
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

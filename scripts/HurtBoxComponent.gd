@@ -3,7 +3,6 @@ extends Area2D
 
 signal received_damage(damage: int)
 
-
 @export var health: Health
 
 func _ready():
@@ -15,3 +14,5 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox != null:
 		health.health -= hitbox.damage
 		received_damage.emit(hitbox.damage)
+	else:
+		print("Proj invalid")

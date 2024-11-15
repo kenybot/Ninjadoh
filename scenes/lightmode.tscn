@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp54u1fq4uyxl"]
+
+[ext_resource type="Texture2D" uid="uid://bgbwhke5l2dmu" path="res://assets/lightmodeparallax.png" id="1_2r51c"]
+[ext_resource type="Texture2D" uid="uid://b0ow3xjgveorw" path="res://assets/darkmodeparallax.png" id="2_lutpg"]
+
+[node name="Lightmode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1018.0
+offset_bottom = -606.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.24)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "light"
+expand_icon = true
+
+[node name="Lightmodeparallax" type="Sprite2D" parent="MarginContainer/HBoxContainer/Button"]
+modulate = Color(1, 1, 1, 0.603922)
+position = Vector2(33.5606, 20.5)
+scale = Vector2(0.0931459, 0.103535)
+texture = ExtResource("1_2r51c")
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Dark
+"
+expand_icon = true
+
+[node name="Lightmodeparallax" type="Sprite2D" parent="MarginContainer/HBoxContainer/Button2"]
+modulate = Color(1, 1, 1, 0.603922)
+visibility_layer = 2
+position = Vector2(33, 20.5)
+scale = Vector2(0.0694737, 0.0826613)
+texture = ExtResource("2_lutpg")
